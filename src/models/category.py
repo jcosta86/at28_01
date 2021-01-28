@@ -31,3 +31,5 @@ class Category(BaseModel):
             raise TypeError('Description must be a string')
         if len(description) > 255:
             raise ValueError('Name can not more than 255 characters')
+        return description
+
