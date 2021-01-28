@@ -1,5 +1,5 @@
 # at28_01
-## Atividade proposta no dia 21/01/2021
+## Atividade proposta no dia 28/01/2021
 
 ### Category
 
@@ -10,5 +10,5 @@
 
 ### Instruções.
 
-    - Instale as bibliotecas: pip install -r requirements.txt
-    - Para rodar os testes: pytest
+    - Instale as bibliotecas: `pip install -r requirements.txt`
+    - Para rodar os testes: `pytest`
