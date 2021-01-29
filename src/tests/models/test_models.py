@@ -48,3 +48,4 @@ def test_description_len():
     with pytest.raises(ValueError):
         category_test = Category('Name', 'description' * 255)
         raise AssertionError('The exception was not raised.')
+

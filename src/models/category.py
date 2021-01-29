@@ -29,3 +29,4 @@ class Category(BaseModel):
     def validate_description(self, key, description):
         description = validate_type(description, str, key)
         return validate_len(description, 255, key)
+
