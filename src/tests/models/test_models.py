@@ -1,15 +1,11 @@
-import sys
-
-sys.path.append('.')
-from src.models.category import Category
-from src.models.base_model import BaseModel
 import pytest
 
+from src.models.base_model import BaseModel
+from src.models.category import Category
 
-def test_category_model_instance():
-    name = 'name'
-    description = 'description'
 
+@pytest.mark.parametrize('name,description', [('Nome', 'Melhor time'), ('Test', 'Descrição')])
+def test_category_model_instance(name, description):
     cat = Category(name, description)
 
     assert isinstance(cat, Category)
@@ -19,33 +15,36 @@ def test_category_model_instance():
     assert cat.description == description
 
 
-def test_name_is_not_none():
-    with pytest.raises(TypeError):
-        category_test = Category(None, 'Melhor time do Brasil')
+@pytest.mark.parametrize('name,description', [(None, 'Melhor time'), (1.6, 'Descrição')])
+def test_name_must_be_str(name, description):
+    with pytest.raises(TypeError) as exc:
+        Category(name, description)
+        assert 'must be' in exc.value
 
 
-def test_name_is_a_string():
-    with pytest.raises(TypeError):
-        category_test = Category(1.6, 'description')
+@pytest.mark.parametrize('name,description', [('', 'Melhor time'), ('' * 5, 'Descrição')])
+def test_empty_name(name, description):
+    with pytest.raises(ValueError) as exc:
+        Category(name, description)
+        assert 'can\'t be empty.' in exc.value
 
 
-def test_empty_name():
-    with pytest.raises(ValueError):
-        category_test = Category('' * 5, 'description')
+@pytest.mark.parametrize('name,description', [('Name' * 100, 'Melhor time'), ('a' * 101, 'Descrição')])
+def test_name_len_greater_than_100(name, description):
+    with pytest.raises(ValueError) as exc:
+        Category(name, description)
+        assert 'can\'t be greater than' in exc.value
 
 
-def test_name_len():
-    with pytest.raises(ValueError):
-        category_test = Category('Name' * 101, 'description')
+@pytest.mark.parametrize('name,description', [('Test', None), ('Test', 5)])
+def test_description_must_be_a_string(name, description):
+    with pytest.raises(TypeError) as exc:
+        Category(name, description)
+        assert 'must be' in exc.value
 
 
-def test_description_is_a_string():
-    with pytest.raises(TypeError):
-        category_test = Category('name', 1.6)
-
-
-def test_description_len():
-    with pytest.raises(ValueError):
-        category_test = Category('Name', 'description' * 255)
-        raise AssertionError('The exception was not raised.')
-
+@pytest.mark.parametrize('name,description', [('Name', 'Test' * 300), ('Test', 'A' * 256)])
+def test_description_len_greater_than_255(name, description):
+    with pytest.raises(ValueError) as exc:
+        Category('Name', 'description' * 255)
+        assert 'can\'t be greater than' in exc.value
