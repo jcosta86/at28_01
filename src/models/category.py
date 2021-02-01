@@ -1,12 +1,8 @@
-import sys
-
-from src.utils.validators import validate_type, validate_not_empty, validate_len
-
-sys.path.append('.')
 from sqlalchemy import Column, String
 from sqlalchemy.orm import validates
 
 from src.models.base_model import BaseModel
+from src.utils.validators import validate_type, validate_not_empty, validate_len
 
 
 class Category(BaseModel):
@@ -17,7 +13,6 @@ class Category(BaseModel):
     def __init__(self, name: str, description: str) -> None:
         self.name = name
         self.description = description
-        
 
     @validates('name')
     def validate_name(self, key, name):
@@ -29,4 +24,3 @@ class Category(BaseModel):
     def validate_description(self, key, description):
         description = validate_type(description, str, key)
         return validate_len(description, 255, key)
-
