@@ -84,4 +84,4 @@ def test_read_by_id_with_invalid_id_should_raise_exception():
 
     with pytest.raises(Exception) as exc:
         controller.read_by_id(712893794895247)
-        assert exc.value == 'Object not found in the database.'
+    assert str(exc.value) == 'Object not found.'
