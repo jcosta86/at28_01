@@ -1,15 +1,21 @@
+import sys
+
+sys.path.append('.')
 from flask import Flask
 from flask_restful import Api
+
+from src.resourses.category_resource import CategoryResource
 
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(CustomerResource, '/api/customer', endpoint='customers')
-api.add_resource(CustomerResource, '/api/customer/<int:id>', endpoint='customer')
+api.add_resource(CategoryResource, '/api/category', endpoint='categories')
+api.add_resource(CategoryResource, '/api/category/<int:id>', endpoint='category')
+
 
 @app.route('/')
 def index():
-    return 'Bem Vindo!'
+    return 'Hello olist!'
 
 
 app.run(debug=True)
