@@ -4,7 +4,7 @@ sys.path.append('.')
 from flask import Flask
 from flask_restful import Api
 
-from src.resourses.category_resource import CategoryResource
+from src.resources.category_resource import CategoryResource
 
 app = Flask(__name__)
 api = Api(app)

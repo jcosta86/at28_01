@@ -2,7 +2,7 @@ from flask_restful import fields, marshal_with
 
 from src.dao.category_dao import CategoryDao
 from src.models.category import Category
-from src.resourses.base_resource import BaseResource
+from src.resources.base_resource import BaseResource
 
 
 class CategoryResource(BaseResource):
