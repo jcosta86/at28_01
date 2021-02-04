@@ -1,0 +1,38 @@
+body{
+    color:rgb(0, 0, 0);
+    background:rgb(147, 148, 148);
+    text-align: center;
+}
+
+a{
+    color:rgb(243, 237, 239);
+}
+
+.container {
+    width: 200px;
+    clear: both;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.container input {
+    width: 100%;
+    clear: both;
+}
+
+table {
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+
+    margin-left:auto;
+    margin-right:auto;
+  }
+  thead {
+    font-size: 30px;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }

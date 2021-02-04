@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h1>Categories</h1>
+{% endblock %}
+{% block body %}
+<div>
+    <h2>
+        <a href="/create_category">Create new category</a>
+    </h2>
+    <br/>
+    <br/>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+            <td>{{ category.id_ }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.description}}</td>
+            <td><a href="/create_category?id={{category.id_}}"> Edit </a></td>
+            <td><a href="/delete_category?id={{category.id_}}"> Delete </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

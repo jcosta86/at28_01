@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<div>
+    <ul>
+        {% for item in list_menu %}
+
+            <a href="{{item['route']}}">{{item['name']}}</a>
+
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
