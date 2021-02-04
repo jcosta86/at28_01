@@ -61,7 +61,7 @@ def test_delete_category(create_instance):
 
     with pytest.raises(Exception) as exc:
         create_instance.read_by_id(created.id_)
-        assert exc.value == 'Object not found.'
+    assert str(exc.value) == 'Object not found.'
 
 
 def test_read_by_id_should_return_category(create_instance):
